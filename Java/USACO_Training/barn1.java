@@ -1,7 +1,7 @@
 /**
 NAME: agentmz1
 LANG: JAVA
-PROG: test
+PROG: barn1
 */
 
 import java.io.*;
@@ -20,8 +20,8 @@ public class barn1 {
 
 	public static void main(String args[]) throws IOException {
 		BufferedReader stdin = new BufferedReader(new FileReader(programName + ".in"));
-        //PrintWriter stdout = new PrintWriter(new BufferedWriter(new FileWriter(programName + ".out")), true);
-        PrintWriter stderr = new PrintWriter(System.err, true);
+        PrintWriter stdout = new PrintWriter(new BufferedWriter(new FileWriter(programName + ".out")), true);
+        // PrintWriter stderr = new PrintWriter(System.err, true);
         StringTokenizer read = new StringTokenizer(stdin.readLine());
         /* init */
         m = Integer.parseInt(read.nextToken());
@@ -37,20 +37,20 @@ public class barn1 {
             last = Math.max(last, s[i]);
             first = Math.min(first, s[i]);
         }
-        dist = last-first;
+        dist = last-first+1;
         for (int j = 0; j < c-1; j ++)
-            gap[j] = Math.abs(s[j]-s[j+1]);
+            gap[j] = Math.abs(s[j]-s[j+1])-1;
         Arrays.sort(gap);
         /* run */
         int lengthRemove = c-2;
-        for (int k = 0; k >= 0; k --) {
+        for (int k = 0; k < m-1 || lengthRemove < 0; k ++) {
+            if (lengthRemove < 0) break;
             dist -= gap[lengthRemove];
             lengthRemove --;
         }
         /* exit */
-        stderr.println(dist);
+        stdout.println(dist);
         stdin.close();
-        //stdout.close();
-        stderr.close();
+        stdout.close();
 	}
 }
