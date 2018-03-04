@@ -20,7 +20,7 @@ const string fileName = "test";
 
 int main() {
     ifstream stdin (fileName + ".in");
-    ofstream stdout (fileName + ".out);
+    ofstream stdout (fileName + ".out");
     /* init */
     /* run */
     /* exit */
