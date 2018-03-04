@@ -16,8 +16,8 @@ using namespace std;
 struct charm {
     int w, d;
 
-    bool operator>(charm b) {
-        return d < b.d;
+    bool operator>(const charm &a, const charm &b) {
+        return a.d > b.d;
     }
 };
 
@@ -34,13 +34,12 @@ int main() {
     ofstream stdout (fileName + ".out");
     /* init */
     stdin >> n >> m;
-    
     s = new charm[n];
     LP(i, 0, n)
         stdin >> s[i].w >> s[i].d;
     sort(s, s+n);
     /* run */
-    cout << s[0].w << " " << s[0].d;
+    cout << s[0].w << " " << s[0].d << endl;
     /* exit */
     cout << endl;
     stdin.close();
