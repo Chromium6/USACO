@@ -34,6 +34,7 @@ int main() {
     ofstream stdout (fileName + ".out");
     /* init */
     stdin >> n >> m;
+    
     s = new charm[n];
     LP(i, 0, n)
         stdin >> s[i].w >> s[i].d;
