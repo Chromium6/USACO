@@ -1,6 +1,6 @@
 /*
 ID: agentmz1
-PROG: test
+PROG: cownomics
 LANG: C++
 */
 

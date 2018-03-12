@@ -15,14 +15,9 @@ using namespace std;
 
 struct charm {
     int w, d;
-
-    bool operator>(const charm &a, const charm &b) {
-        return a.d > b.d;
-    }
 };
 
 /* var dec */
-const string fileName = "test";
 int n; // total charms
 int m; // max weight
 charm *s; // store charm data
@@ -30,8 +25,8 @@ charm *s; // store charm data
 /* func dec */
 
 int main() {
-    ifstream stdin (fileName + ".in");
-    ofstream stdout (fileName + ".out");
+    ifstream stdin ("test.in");
+    ofstream stdout ("test.out");
     /* init */
     stdin >> n >> m;
     s = new charm[n];
