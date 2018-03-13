@@ -2,13 +2,14 @@
 ID: agentmz1
 PROG: cownomics
 LANG: C++
+passed
 */
 
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <map>
-#include <algorithm>
+#include <set>
 
 using namespace std;
 #define LP(name, minVal, maxVal) for(int name = minVal; name < maxVal; name++)
@@ -26,13 +27,24 @@ int conv(char k) {
     return translate.at(k);
 }
 
-bool check(int i, int j, int k) { // check valid spot combo
+int toInt(char a, char b, char c) { // convert a tripet of bases into a number
+    return 16*conv(a) + 4*conv(b) + conv(c); // convert it to base-4, then to base-10
+}
 
+bool check(int i, int j, int k) { // check valid spot combo
+    set<int> found; // record which combos have been found
+    LP(g, 0, n)
+        found.insert(toInt(good[g][i], good[g][j], good[g][k]));
+    LP(b, 0, n) {
+        int val = toInt(bad[b][i], bad[b][j], bad[b][k]);
+        if (found.count(val) > 0) return false;
+    }
+    return true;
 }
 
 int main() {
-    ifstream stdin ("test.in");
-    ofstream stdout ("test.out");
+    ifstream stdin ("cownomics.in");
+    ofstream stdout ("cownomics.out");
     /* init */
     translate.insert(pair<char, int>('A', 0));
     translate.insert(pair<char, int>('T', 1));
@@ -47,8 +59,20 @@ int main() {
     LP(j, 0, n)
         stdin >> bad[j];
     /* run */
+    LP(i, 0, m) {
+        LP(j, i+1, m) {
+            LP(k, j+1, m) {
+                cout << "(" << i << ", " << j << ", " << k << ")";
+                if (check(i, j, k)) {
+                    sure ++;
+                    cout << " [V]";
+                }
+                cout << endl;
+            }
+        }
+    }
     /* exit */
-    cout << endl;
+    stdout << sure << endl;
     stdin.close();
     stdout.close();
     return 0;
