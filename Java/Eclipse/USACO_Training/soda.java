@@ -7,7 +7,7 @@ PROG: test
 import java.io.*;
 import java.util.*;
 
-public class className {
+public class soda {
 
     /* var dec */
     static String programName = "test";
