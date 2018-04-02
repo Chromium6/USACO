@@ -1,19 +1,18 @@
 /**
-NAME: agentmz1
-LANG: JAVA
-PROG: test
-NOTES: 
+The debugging test script for the genetic algorithms project 
 */
-
 import java.io.*;
 import java.util.*;
 
-public class className {
+public class Run {
 
     /* var dec */
     static String programName = "test";
 
-    /* func dec */
+    /* settings */
+    static final int popSize = 100;
+    static final int chromAmount = 100;
+    static final int chromLength = 10;
 
 	public static void main(String args[]) throws IOException {
 		BufferedReader stdin = new BufferedReader(new FileReader(programName + ".in"));

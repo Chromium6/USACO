@@ -2,28 +2,33 @@
 NAME: agentmz1
 LANG: JAVA
 PROG: test
-NOTES: 
 */
 
 import java.io.*;
 import java.util.*;
 
-public class className {
+public class DNA_Scan {
 
     /* var dec */
-    static String programName = "test";
+    static String programName = "dna";
+    String fragment; // DNA sequence to be scanned
 
     /* func dec */
+    static int[] findSequence(int sequence) { // returns start and end index, inclusive
+        int[] range = new int[2];
+        
+        return range;
+    }
 
 	public static void main(String args[]) throws IOException {
 		BufferedReader stdin = new BufferedReader(new FileReader(programName + ".in"));
-        PrintWriter stderr = new PrintWriter(System.out, true);// new BufferedWriter(new FileWriter(programName + ".out")), true);
+        PrintWriter stdout = new PrintWriter(System.err, true); //new BufferedWriter(new FileWriter(programName + ".out")), true);
         StringTokenizer read = new StringTokenizer(stdin.readLine());
         /* init */
         /* run */
         /* exit */
         stdin.close();
-        stderr.close();
+        stdout.close();
 	}
 
     static int get(StringTokenizer k, int l) {

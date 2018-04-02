@@ -8,7 +8,7 @@ NOTES:
 import java.io.*;
 import java.util.*;
 
-public class className {
+public class sprime {
 
     /* var dec */
     static String programName = "test";
@@ -17,7 +17,7 @@ public class className {
 
 	public static void main(String args[]) throws IOException {
 		BufferedReader stdin = new BufferedReader(new FileReader(programName + ".in"));
-        PrintWriter stderr = new PrintWriter(System.out, true);// new BufferedWriter(new FileWriter(programName + ".out")), true);
+        PrintWriter stderr = new PrintWriter(System.err, true);// new BufferedWriter(new FileWriter(programName + ".out")), true);
         StringTokenizer read = new StringTokenizer(stdin.readLine());
         /* init */
         /* run */

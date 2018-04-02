@@ -2,25 +2,39 @@
 NAME: agentmz1
 LANG: JAVA
 PROG: test
-NOTES: 
 */
 
 import java.io.*;
 import java.util.*;
 
-public class className {
+// passed
+public class lemonade {
 
     /* var dec */
-    static String programName = "test";
+    static String programName = "lemonade";
+    static int n; // number of cows
+    static long[] s; // acceptable wait ranges
 
     /* func dec */
 
 	public static void main(String args[]) throws IOException {
 		BufferedReader stdin = new BufferedReader(new FileReader(programName + ".in"));
-        PrintWriter stderr = new PrintWriter(System.out, true);// new BufferedWriter(new FileWriter(programName + ".out")), true);
+        PrintWriter stderr = new PrintWriter(new BufferedWriter(new FileWriter(programName + ".out")), true);//System.err, true);
         StringTokenizer read = new StringTokenizer(stdin.readLine());
         /* init */
+        n = get(read, 0);
+        s = new long[n];
+        read = new StringTokenizer(stdin.readLine());
+        for (int i = 0; i < n; i ++)
+            s[i] = get(read, 0, 0);
+        Arrays.sort(s);
         /* run */
+        int sum = 0;
+        for (int i = 0; i < n; i ++) {
+            if (s[n-i-1] >= i) sum ++;
+            else break;
+        }
+        stderr.println(sum);
         /* exit */
         stdin.close();
         stderr.close();

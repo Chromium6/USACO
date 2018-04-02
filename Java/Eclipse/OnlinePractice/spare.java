@@ -8,7 +8,7 @@ NOTES:
 import java.io.*;
 import java.util.*;
 
-public class className {
+public class spare {
 
     /* var dec */
     static String programName = "test";
@@ -16,10 +16,11 @@ public class className {
     /* func dec */
 
 	public static void main(String args[]) throws IOException {
-		BufferedReader stdin = new BufferedReader(new FileReader(programName + ".in"));
+		BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));//FileReader(programName + ".in"));
         PrintWriter stderr = new PrintWriter(System.out, true);// new BufferedWriter(new FileWriter(programName + ".out")), true);
         StringTokenizer read = new StringTokenizer(stdin.readLine());
         /* init */
+        int botPos, peachPos;
         /* run */
         /* exit */
         stdin.close();
