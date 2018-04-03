@@ -69,8 +69,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -88,6 +86,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -217,11 +217,13 @@
       <workItem from="1520231997385" duration="648000" />
       <workItem from="1520236149047" duration="1433000" />
       <workItem from="1520272782891" duration="377000" />
+      <workItem from="1522524874526" duration="353000" />
+      <workItem from="1522633994481" duration="207000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2458000" />
+    <option name="totallyTimeSpent" value="3018000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="312" y="211" width="1172" height="780" extended-state="0" />
