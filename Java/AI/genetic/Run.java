@@ -11,14 +11,12 @@ public class Run {
 
     /* settings */
     static final int popSize = 100;
-    static final int chromAmount = 100;
-    static final int chromLength = 10;
+    static final int chromAmount = 1;
+    static final int chromLength = 6;
 
 	public static void main(String args[]) throws IOException {
-		BufferedReader stdin = new BufferedReader(new FileReader(programName + ".in"));
-        PrintWriter stderr = new PrintWriter(System.out, true);// new BufferedWriter(new FileWriter(programName + ".out")), true);
-        StringTokenizer read = new StringTokenizer(stdin.readLine());
         /* init */
+        Population
         /* run */
         /* exit */
         stdin.close();

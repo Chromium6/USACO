@@ -12,7 +12,7 @@ public class DNA {
     public DNA(int n) { // clean slate
         data = new int[n];
         for (int i = 0; i < n; i ++) {
-            data[i] = (int)(Math.round((Math.random()*10))-5);
+            data[i] = (int)(Math.round((Math.random()*10))-5); // if you change this formula, remember to reflect it in the mutating function!
         }
     }
 
