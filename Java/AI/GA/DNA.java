@@ -1,4 +1,3 @@
-
 /**
  The basic information storage for an individual.
 Essentially a chromosome.
@@ -16,31 +15,26 @@ public class DNA {
         }
     }
 
-    public DNA(int[] info) { // create from data
-        data = info;
-    }
-
-    /* Getters */
-    public int get(int index) {
+    /* Methods */
+    public int get(int index) { // get/set gene
         return data[index];
     }
 
-    public int length() {
+    public void set(int index, int val) {
+        data[index] = val;
+    }
+
+    public int size() { // get DNA length
         return data.length;
     }
 
     public int[] info() {
         return data;
     }
-    /* Setters */
-    public void set(int index, int val) {
-        data[index] = val;
-    }
 
-    /* Functions */
     public String toString() {
         String k = "";
-        for (int i = 0; i < this.length(); i ++) {
+        for (int i = 0; i < this.size(); i ++) {
             k += "[" + (this.get(i) >= 0 ? " " : "") + this.get(i) + "]";
         }
         return k;
