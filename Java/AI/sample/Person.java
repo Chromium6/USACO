@@ -1,44 +1,47 @@
-package genetic.beta;
-
 // this contains the DNA and phenotype expression
 public class Person {
 	// genotype
-	DNA dna;
+	byte[] dna;
 	// temporarily store the rating (aka fitness)
 	int fitness = 0;
 	
 	/* constructors */
 	Person(int g_size, boolean random) {
-		dna = new DNA();
-		dna.setSize(g_size);
-		if (random) dna.init();
+		dna = new byte[g_size];
+		if (random) {
+			for (int i = 0; i < g_size; i ++) {
+				dna[i] = (byte)(Math.round(Math.random()*10));
+			}
+		}
 	}
 	
 	/* getter/setters */
 	int getSize() {
-		return dna.getSize();
+		return dna.length;
 	}
 	byte getGene(int index) {
 		if (index > getSize()) return -1;
-		return dna.getGene(index);
-	}
-	void setSize(int n) {
-		dna.setSize(n);
+		return dna[index];
 	}
 	void setGene(int index, byte val) {
-		dna.setGene(index, val);
+		dna[index] = val;
 	}
 	/* functional methods */
 	String seeData() {
-		return dna.seeData();
+		String k = "";
+		for (int i = 0; i < getSize(); i ++) {
+			k += "[" + getGene(i) + "]";
+		}
+		k += " Fitness: " + getRating();
+		return k;
 	}
 	// calculate the rating (sometimes called the fitness)
-	int getRating(String answer) {
+	int getRating() {
+		int[] optimal = {5, 10, 2, 6, 3, 6, 4, 6, 5, 2, 5, 10, 2, 6, 3, 6, 4, 6, 5, 2, 5, 10, 2, 6, 3, 6, 4, 6, 5, 2};
 		if (fitness == 0) {
 			fitness = 0;
 			for (int i = 0; i < getSize(); i ++) {
-				byte opGene = (byte) (answer.charAt(i) - '0');
-				if (opGene == getGene(i)) fitness ++;
+				if (getGene(i) == optimal[i]) fitness ++;
 			}
 		}
 		return fitness;
@@ -47,10 +50,15 @@ public class Person {
 	Person mate(Person mom) {
 		Person child = new Person(getSize(), false);
 		for (int i = 0; i < getSize(); i ++) {
-			long coin = Math.round(Math.random());
+			double coin = Math.random();
 			if (coin > 0.5) child.setGene(i, mom.getGene(i));
 			else child.setGene(i, getGene(i));
 		}
 		return child;
+	}
+
+	public static void main(String args[]) {
+		Person k = new Person(10, true);
+		System.out.println(k.seeData() + " " + k.getRating());
 	}
 }

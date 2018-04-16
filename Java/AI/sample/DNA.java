@@ -1,5 +1,3 @@
-package genetic.beta;
-
 // contains the genotype (change the data type of genes if necessary)
 public class DNA {
 	// binary genetic info (default length 5)
@@ -9,7 +7,7 @@ public class DNA {
 	public void init() {
 		// randomizes the genes
 		for (int i = 0; i < getSize(); i ++) {
-			data[i] = (byte) Math.round(Math.random());
+			data[i] = (byte) Math.round(Math.random()*10);
 		}
 	}
 	
@@ -31,7 +29,7 @@ public class DNA {
 	public String seeData() {
 		String out = "";
 		for (int i = 0; i < getSize(); i ++) {
-			out += data[i];
+			out += "[" + data[i] + "]";
 		}
 		return out;
 	}

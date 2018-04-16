@@ -1,10 +1,6 @@
-package genetic.beta;
-
 public class Population {
 	// store the population
 	Person data[];
-	// set the optimum solution
-	public static String optimum = "";
 	// population mating constants
 	private static final double mutationRate = 0.013;
 	private static final int batchSize = 20;
@@ -26,15 +22,12 @@ public class Population {
 	void setPerson(int index, Person bro) {
 		data[index] = bro;
 	}
-	void setOptimum(String newOptimum) {
-		optimum = newOptimum;
-	}
 	
 	/* functional methods */
 	Person getBest() {
 		Person best = data[0];
 		for (Person dude : data) {
-			if (dude.getRating(optimum) > best.getRating(optimum)) best = dude;
+			if (dude.getRating() > best.getRating()) best = dude;
 		}
 		return best;
 	}
@@ -76,5 +69,12 @@ public class Population {
 		}
 		// update population
 		data = newPop.data;
+	}
+
+	public static void main(String[] args) {
+		Population k = new Population(10, 10, true);
+		for (int i = 0; i < k.getSize(); i ++) {
+			System.out.println(k.getPerson(i).seeData());
+		}
 	}
 }
