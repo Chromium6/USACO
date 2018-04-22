@@ -1,4 +1,4 @@
-package GA;
+package turing.GA;
 /**
  This is an individual of a population. Each one is a "test case" of evolution
 */

@@ -1,4 +1,4 @@
-package GA;
+package turing.GA;
 /**
  The basic information storage for an individual.
 Essentially a chromosome.

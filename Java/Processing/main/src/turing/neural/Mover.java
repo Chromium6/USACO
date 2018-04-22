@@ -1,4 +1,4 @@
-package main;
+package turing.neural;
 import processing.core.*; // processing lib
 
 public class Mover {

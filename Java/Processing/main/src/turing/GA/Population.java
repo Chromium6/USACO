@@ -1,4 +1,4 @@
-package GA; 
+package turing.GA; 
 /**
  The gene pool being tested. Simulates a limited population with variety, natural selection, and mating.
 */

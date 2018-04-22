@@ -1,4 +1,4 @@
-package GA;
+package turing.GA;
 /**
 The debugging test script for the genetic algorithms project 
 */

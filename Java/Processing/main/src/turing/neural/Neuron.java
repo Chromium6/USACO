@@ -1,4 +1,4 @@
-package main;
+package turing.neural;
 
 public class Neuron {
 	private float[] weights; // weights for inputs
@@ -17,8 +17,12 @@ public class Neuron {
 		}
 	}
 	
+	public Neuron(float[] weights) {
+		this.weights = weights;
+	}
+	
 	/* methods */
-	public float feedFoward(int[] inputs) {
+	public float feedFoward(float[] inputs) {
 		float rawSum = 0;
 		for (int i = 0; i < inputs.length; i ++) {
 			rawSum += inputs[i]*weights[i];

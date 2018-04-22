@@ -1,4 +1,4 @@
-package googleauth;
+package turing.googleauth;
 import java.io.File;
 
 public class QualityControl {
