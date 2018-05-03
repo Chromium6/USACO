@@ -1,0 +1,24 @@
+import java.io.*;
+import java.util.*;
+import java.net.*;
+
+public class Name {
+    
+    /* var dec */
+
+    public static void main(String args[]) {
+        
+    }
+
+    private static void init() {
+
+    }
+
+    private static void logic() {
+
+    }
+
+    private static void exit() {
+
+    }
+}
