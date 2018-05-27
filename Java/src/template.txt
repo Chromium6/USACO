@@ -1,24 +1,29 @@
+package contest.usaco.training;
+
 import java.io.*;
 import java.util.*;
-import java.net.*;
 
-public class Name {
-    
-    /* var dec */
+public class homework {
+	private static final String programName = "test";
 
-    public static void main(String args[]) {
-        
+	public static void main(String[] args) throws IOException {
+		BufferedReader stdin = new BufferedReader(new FileReader(programName + ".in"));
+        PrintWriter stdout = new PrintWriter(new BufferedWriter(new FileWriter(programName + ".out")), true);//System.err, true);
+        StringTokenizer read = new StringTokenizer(stdin.readLine());
+        /* var dec */
+        /* run */
+        /* exit */
+	}
+	
+    static int get(StringTokenizer k, int l) {
+        return Integer.parseInt(k.nextToken());
     }
 
-    private static void init() {
-
+    static String get(StringTokenizer k) {
+        return k.nextToken();
     }
 
-    private static void logic() {
-
-    }
-
-    private static void exit() {
-
+    static long get(StringTokenizer k, int l, int j) {
+        return Long.parseLong(k.nextToken());
     }
 }
