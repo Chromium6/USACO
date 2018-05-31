@@ -1,4 +1,4 @@
-//package contest.usaco.training;
+package contest.usaco.training;
 /**
 NAME: agentmz1
 LANG: JAVA
@@ -9,9 +9,13 @@ NOTES:
 import java.io.*;
 import java.util.*;
 
+// passed
 public class sprime {
     static String programName = "sprime";
-
+    static final int[] headDigits = {2, 3, 5, 7}; // head digits
+    static final int[] tailDigits = {1, 3, 5, 7, 9}; // subsequent digits
+    static ArrayList<Integer> data = new ArrayList<Integer>();
+    
     /* func dec */
     static boolean isPrime(int n) {
     	if (n == 2) return true;
@@ -25,27 +29,38 @@ public class sprime {
         return true;
     }
     
-    static boolean isSPrime(int n) {
-    	while (n > 1) {
-    		if (!isPrime(n)) return false;
-    		n /= 10;
+    static void findSPrimes(int current, int numLength) {
+    	//System.out.println("Testing " + current);
+    	if ((""+current).length() == numLength) {
+    		if (isPrime(current)) {
+    			data.add(current);
+    			//System.out.println("\tTrue");
+    		}
+    		return;
     	}
-    	return true;
+    	for (int tail : tailDigits) {
+    		int newNum = current*10 + tail;
+    		if (!isPrime(newNum)) continue;
+    		findSPrimes(current*10+tail, numLength);
+    	}
     }
 
 	public static void main(String args[]) throws IOException {
 		BufferedReader stdin = new BufferedReader(new FileReader(programName + ".in"));
-        PrintWriter stderr = new PrintWriter(new BufferedWriter(new FileWriter(programName + ".out")), true);
+        PrintWriter stdout = new PrintWriter(new BufferedWriter(new FileWriter(programName + ".out")), true);
         StringTokenizer read = new StringTokenizer(stdin.readLine());
         /* var dec */
         int numLength = get(read, 0);
-        ArrayList<Integer> data = new ArrayList<Integer>();
         /* run */
+        String num;
+        for (int head : headDigits) {
+        	findSPrimes(head, numLength);
+        }
         /* exit */
-        for (int item : data)
-        	stderr.println(item);
+        for (int i : data)
+        	stdout.println(i);
         stdin.close();
-        stderr.close();
+        stdout.close();
 	}
 
     static int get(StringTokenizer k, int l) {
