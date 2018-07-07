@@ -1,0 +1,99 @@
+# Setting PATH for Python 3.5
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+export PATH
+
+# added by Anaconda3 4.4.0 installer
+export PATH="/Users/Mac-MZ24/anaconda/bin:$PATH"
+
+# customizing shell
+export PS1="||___________________________________________________________________________\n||\w @ \h (\u) :: \d \t\n||____}\n|| >>> "
+
+# shortcuts
+alias root="cd ~/"
+alias back="cd .."
+alias reload="source ~/.bash_profile"
+alias dev1="mt ~/Desktop/00/18/Docs/Code/GitHub/USACO"
+alias uu="sudo apt update && sudo apt upgrade"
+alias python="python2"
+
+# ease-of-use functions
+ct() { # (C/C++) program instant (t)esting
+    echo [Loading...]
+	time g++ -o lab21 "$1.cpp"
+    echo [Executing...]
+	time ./lab21
+}
+
+ncf() { # (n)ew (C/C++) (f)ile
+    if [ -e "$1.cpp" ]; then
+		echo "File $1.cpp already exists!"
+	else
+		echo >> "$1.cpp"
+		echo Successfully created $1.cpp
+		cp ~/Desktop/00/18/Docs/Code/GitHub/USACO/C++/template "$1.cpp"
+	fi
+}
+
+jt() { # (j)ava (t)est
+	echo [Loading...]
+	time javac "$1.java"
+	echo [Executing...]
+	time java $1
+}
+
+njf() { # (n)ew (j)ava (f)ile
+	if [ -e "$1.java" ]; then
+		echo "File $1.java already exists!"
+	else
+		echo >> "$1.java"
+		echo File Creation Success for $1.java
+		cp ~/Desktop/00/18/Docs/Code/GitHub/USACO/Java/Eclipse/template.txt $1.java
+	fi
+}
+
+mt() { # (m)ove (t)o
+    cd "$1"
+    ls
+}
+
+so() { # (s)cout (o)ut a directory
+        original=$(pwd>&1)
+        mt "$1"
+        cd $original
+}
+
+renew() { # refresh bash profile after changes
+    root
+    source .bash_profile
+}
+
+batL() { # check (bat)tery (l)ife
+        acpi -V
+}
+
+del() { # safe delete that moves it into an auxiliary folder
+    mv "$1" ~/Void
+}
+
+wd() { # (w)aste (d)ump of folder Void
+    rm -r ~/Void
+    mkdir ~/Void
+}
+
+# GitHub stuff
+
+gR() {
+	dev1
+	git add -A
+	git commit -m "$1"
+	git push
+}
+
+##
+# Your previous /Users/Mac-MZ24/.bash_profile file was backed up as /Users/Mac-MZ24/.bash_profile.macports-saved_2018-02-17_at_22:14:56
+##
+
+# MacPorts Installer addition on 2018-02-17_at_22:14:56: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/home/khryo/Downloads/processing-3.3.7-linux64/processing-3.3.7/core/library/core.jar"/>
+	<classpathentry kind="lib" path="/home/khryo/Downloads/jsoup-1.11.3.jar"/>
+	<classpathentry kind="lib" path="/home/khryo/Downloads/weka-3-8-2/weka.jar"/>
+	<classpathentry kind="lib" path="/home/khryo/Downloads/neuroph-2.94/neuroph-core-2.94.jar"/>
+	<classpathentry kind="lib" path="/home/khryo/Downloads/webcam-capture-0.3.12-dist/libs/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="/home/khryo/Downloads/webcam-capture-0.3.12-dist/libs/bridj-0.7.0.jar"/>
+	<classpathentry kind="lib" path="/home/khryo/Downloads/slf4j-jdk14-1.6.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
