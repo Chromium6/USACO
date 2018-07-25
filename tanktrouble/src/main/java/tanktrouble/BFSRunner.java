@@ -1,18 +1,14 @@
 package tanktrouble;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class AStarRunner {
-	static Maze maze;
-	static Queue<Pair> toVisit; // bfs
-	static Pair[][] cameFrom; // for tracing back
-	static boolean[][] visited; // prevent loops
+public class BFSRunner {
+	Queue<Pair> toVisit; // bfs
+	Pair[][] cameFrom; // for tracing back
+	boolean[][] visited; // prevent loops
 	
-	public static void main(String[] args) {
-		/* init */
-		Maze maze = new Maze("testMaze.txt");
+	public void run(Maze maze) {
 		toVisit = new LinkedList<Pair>();
 		cameFrom = new Pair[maze.getSize()][maze.getSize()];
 		visited = new boolean[maze.getSize()][maze.getSize()];
@@ -34,7 +30,7 @@ public class AStarRunner {
 					if (!(i+j == 1 || i+j == -1)) continue;
 					neighbor = curr.add(i, j);
 					//System.out.println(i + " " + j);
-					if (    neighbor.isValid(0, maze.getSize()) &&
+					if (neighbor.isValid(0, maze.getSize()) &&
 							!visited[neighbor.x][neighbor.y] &&
 							maze.getVal(neighbor.x, neighbor.y) != 2) {
 						toVisit.add(neighbor);
@@ -45,13 +41,14 @@ public class AStarRunner {
 			counting++;
 			visited[curr.x][curr.y] = true;
 		}
-		System.out.println(counting + " steps to arrive at (" + curr.x + ", " + curr.y + ")");
+		//System.out.println(counting + " steps to arrive at (" + curr.x + ", " + curr.y + ")");
 		
+		/*
 		// trace the route back
 		Pair prev = curr;
 		while (prev != maze.iLoc) {
 			System.out.print("(" + prev.x + ", " + prev.y + ") -> ");
 			prev = cameFrom[prev.x][prev.y];
-		}
+		}*/
 	}
 }

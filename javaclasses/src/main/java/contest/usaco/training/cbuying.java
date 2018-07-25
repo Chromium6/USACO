@@ -64,11 +64,10 @@ public class cbuying {
     
 }
 
-class chocolate implements Comparable<chocolate> {
+class chocolate implements Comparable {
     long cost, cows;
 
-    @Override
-    public int compareTo(chocolate o) {
-        return (int) (this.cost - o.cost);
-    }
+	public int compareTo(Object arg0) {
+		return (int)(this.cost - ((chocolate)arg0).cost);
+	}
 }

@@ -1,7 +1,7 @@
-package processing.physical;
-import processing.core.*; // processing lib
+/*package processing.physical;
 
 public class Mover {
+
 	PApplet p; // Processing sketch in which this Mover exists
 	PVector location, velocity, acceleration; // physics
 	float maxForce; // limitations
@@ -9,7 +9,7 @@ public class Mover {
 	float size;
 	float wandering; // angle for wandering
 	
-	/* init */
+	/* init
 	public Mover(PApplet current, int xi, int yi) {
 		p = current;
 		location = new PVector(xi, yi);
@@ -23,7 +23,7 @@ public class Mover {
 		size = 6;
 	}
 	
-	/* methods */
+	/* methods
 	public void wander(int arrivingRadius) {
 		float wanderR = 25; // Radius for our "wander circle"
 	    float wanderD = 40; // Distance for our "wander circle"
@@ -111,3 +111,4 @@ public class Mover {
 		p.popMatrix();
 	}
 }
+*/

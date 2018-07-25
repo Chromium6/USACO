@@ -79,8 +79,7 @@ public class soda {
 class data implements Comparable<data> {
     int position;
     int type; // -1 for start, 1 for end
-
-    @Override
+    
     public int compareTo(data o) {
         return this.position - o.position;
     }

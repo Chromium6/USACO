@@ -1,26 +1,20 @@
 package tanktrouble;
 
-import org.jbox2d.common.Vec2;
-import org.jbox2d.particle.ParticleSystem;
-
 import processing.core.*;
 
 public class GameMaster extends PApplet{
-	Tank player;
 	Maze maze;
-	MazeRunner runner;
+	BFSRunner crudeRunner;
 	
 	// necessary in Eclipse to define size() and smooth() 
 	public void settings() {
-		size(500, 500);
+		size(600, 600);
 	}
 	
 	// Processing
 	public void setup() {
-		player  = new Tank(this, new PVector(width/2, height/2));
 		maze = new Maze("testMaze.txt");
-		runner = new MazeRunner(maze);
-		runner.setDisplay(this);
+		crudeRunner = new BFSRunner();
 		rectMode(CENTER);
 		
 		for (int i = 0; i < maze.getSize(); i ++) {
@@ -33,25 +27,55 @@ public class GameMaster extends PApplet{
 				rect(j*unitL + unitL/2, i*unitL + unitL/2, unitL, unitL);
 			}
 		}
-		/*runner.bfsTransverse(maze.iLoc, maze.fLoc);
-		Vec2 backProp = maze.fLoc;
-		while (runner.cameFrom[(int)backProp.x][(int)backProp.y] != backProp) {
-			if (backProp == null) continue;
+		
+		crudeRunner.run(maze);
+		Pair curr = maze.fLoc;
+		Pair prev = curr;
+		while (prev != maze.iLoc) {
+			prev = crudeRunner.cameFrom[prev.x][prev.y];
+			if (prev == maze.iLoc) break;
 			fill(255, 0, 0);
-			rect(runner.cameFrom[(int)backProp.x][(int)backProp.y].x*maze.getSize()/height, runner.cameFrom[(int)backProp.x][(int)backProp.y].y*maze.getSize()/height, maze.getSize()/height, maze.getSize()/height);
-			backProp = runner.cameFrom[(int)backProp.x][(int)backProp.y];
+			float unit = height/maze.getSize();
+			rect((float)((prev.x+0.5)*unit), (float)((prev.y+0.5)*unit), unit, unit);			
 		}
-		*/
+		
 	}
 	
 	// Processing
 	public void draw() {
-		// background(255);
-		//player.display();
+		noStroke();
+		background(255);
+		int unit = height/maze.getSize();
+		int x = (int)Math.round(mouseX/unit), y = (int)Math.round(mouseY/unit);
+		if (maze.getVal(x, y) == 1) maze.iLoc = new Pair(x, y);
+		crudeRunner.run(maze);
+		Pair curr = maze.fLoc;
+		Pair prev = curr;
+		for (int i = 0; i < maze.getSize(); i ++) {
+			for (int j = 0; j < maze.getSize(); j ++) {
+				int unitL = height/maze.getSize();
+				if (maze.getVal(j, i) == 1) fill(255);
+				else if (maze.getVal(j, i) == 2) fill(0);
+				else if (maze.getVal(j, i) == 3) fill(0, 255, 0);
+				else if (maze.getVal(j, i) == 4) fill(255, 255, 0);
+				rect(j*unitL + unitL/2, i*unitL + unitL/2, unitL, unitL);
+			}
+		}
+		
+		//System.out.println(String.format("Mouse is at (%s, %s)", x, y));
+		
+		while (prev != maze.iLoc) {
+			prev = crudeRunner.cameFrom[prev.x][prev.y];
+			fill(255, 0, 0);
+			rect((float)((prev.x+0.5)*unit), (float)((prev.y+0.5)*unit), unit, unit);			
+		}
+		
+		maze.saveFile("backup.txt");
 	}
 	
 	public static void main(String[] args) {
 		PApplet.main("tanktrouble.GameMaster");
+		System.out.println("Checkpoint");
 	}
 
 }

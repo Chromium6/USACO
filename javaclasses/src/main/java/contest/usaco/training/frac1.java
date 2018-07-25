@@ -83,7 +83,6 @@ class Fraction implements Comparable {
 		val = num/den;
 	}
 
-	@Override
 	public int compareTo(Object o) {
 		if (((Fraction)o).val > this.val) return -1;
 		return 1;

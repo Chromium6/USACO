@@ -1,4 +1,4 @@
-package ai.neural.firstNeuroph;
+/* package ai.neural.firstNeuroph;
 
 import org.neuroph.core.*; // import upper-level classes
 import org.neuroph.nnet.*; // import neural net types
@@ -32,7 +32,7 @@ public class BasicUsage implements Serializable {
 		// save the NeuralNet to file (".nnet")
 		firstNet.save("or_perceptron.nnet");*/
 		
-		/* APPLICATION */
+		/* APPLICATION
 		// load a saved NeuralNet from a file (".nnet")
 		NeuralNetwork savedNet = NeuralNetwork.createFromFile(new File("or_perceptron.nnet"));
 		
@@ -44,3 +44,4 @@ public class BasicUsage implements Serializable {
 	}
 
 }
+*/

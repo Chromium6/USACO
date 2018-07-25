@@ -6,7 +6,7 @@ The debugging test script for the genetic algorithms project
 public class Run {
 
     /* settings */
-    static final int popSize = 100;
+    static final int popSize = 25;
     static final int[] geneLengths = {5, 3, 10};
     static int generations;
 
