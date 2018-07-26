@@ -1,0 +1,95 @@
+1) Install Django via pip {pip install django}
+2) Create the mysite project {django-admin startproject mysite}
+    a) Outer folder just for reference, name irrelavant
+    b) manage.py: interactive command-line tool {python manage.py [COMMAND]}
+    c) Inner folder (named mysite): python package, keep name
+        i) __init__.py: component of python package
+        ii) settings.py: config for website
+        iii) urls.py: URLs declaration of website
+        iv) wsgi.py: for WSGI servers
+3) Test run of server {python manage.py runserver}
+4) Create the polls app (functional component) {python manage.py startapp [APPNAME]}
+5) Write a view (essentially a site, app-specific)
+    a) Modifies [APPNAME]/views.py
+6) Point to that view locally (app-specific)
+    a) Modifies [APPNAME]/urls.py
+    b) Use path('', views.index, name='index')
+        i) General: path(route, views, kwargs, name)
+        ii) route: URL pattern (e.g. www.mysite.com/myapp/)
+        iii) views: what view to call when route is validated
+        iv) kwargs: arbitrary
+        v) name: how this is referenced elsewhere
+7) Point the website to the app urls (website-level)
+    a) Modified mysite/urls.py
+    b) Use path('polls/', include('polls.urls'))
+        i) include() points to app URLconfs (URL lists)
+8) Migrate changes {python manage.py migrate}
+    a) Makes databases in INSTALLED_APPS (mysite/settings.py)
+9) Create models (~Objects, app-specific)
+    a) Modify [APPNAME]/models.py
+    b) Define each model as a subclass of django.db.models.Model
+    c) Each item of a model is a subclass of Field
+10) Add this app to INSTALLED_APPS
+    a) Modified mysite/settings.py
+    b) Add 'polls.apps.PollsConfig' to INSTALLED_APPS
+11) Commit changes to models as a migration {python manage.py makemigrations polls}
+12) Apply changes to database {python manage.py sqlmigrate polls 0001}
+    a) The number is the name of the migration file created in [APPNAME]/migrations
+    b) Output varies by SQL services
+13) Migrate changes (python manage.py migrate)
+--------------------------------------------------------
+SUMMARY: Steps for making model changes
+    I) Change models in [APPNAME]/models.py
+    II) python manage.py makemigrations
+    III) python manage.py migrations
+--------------------------------------------------------
+14) Open interactive API {python manage.py shell}
+15) Added __str__() to models for debugging
+16) Create admin superuser (same as GitHub account)
+17) Allow admins to modify the app
+    a) Modify [APPNAME]/admin.py
+18) Use the admin site to create a question (log in, JavaScript components included automatically)
+19) Create more views (app-specific)
+    a) Edit [APPNAME]/views.py
+    b) These views accept arg (question_id)
+20) Point urls to these views (app-specific)
+    a) Edit [APPNAME]/urls.py
+    b) Use path([ARG]/[VIEW_NAME])
+21) Modify the index view to have a purpose
+    a) Edit [APPNAME]/views.py
+    b) All a view needs is a HttpRequest passed in and a HttpResponse passed out
+22) Create the templates directory to store django templates (app-specific)
+    a) Create control statements for displaying information
+    b) Write in HTML
+23) Integrate these changes into the view
+    a) Use django.template.loader get_template([template_location])
+    b) Use dictionary to pair template argument name to argument
+    c) Pass dictionary to template.render()
+24) Use django.shortcuts.render as shortcut to template.render()
+    a) render([HttpRequest], [template_location], [arg_dict])
+        i) Returns HttpResponse
+25) Contruct exception for "404 Not Found"
+    a) Use python "try...except..."
+    b) Modify the detail() view
+    c) Integrate a detail.html template (create the file)
+26) Use the django.shortcuts.get_object_or_404()
+    a) Uses auto-generated Error404
+    b) get_object_or_404([Django model], pk=[args])
+    c) The equivalent for getting a list is get_list_or_404 (replaces Question.objects)
+27) Access the Question choice list through ForeignKey properties
+28) Make HTML urls more dynamic
+    a) Not hard coded, now refer to [APPNAME]/urls.py
+    b) Refers to url by name as defined in path()
+    c) Use {% url [name_as_def_in_path] [arg] %}
+29) Add app_name to [APPNAME]/urls.py for multi-app URLconfs
+    a) Modify the url address in the HTML template ('detail' -> 'polls:detail')
+30) Implement an actual voting machanism in detail.html
+    a) Basically redirect to voting page, which increments vote and redirects to results page
+    b) If no data provided, redirects back to voting form with error message
+    c) See detail.html for details
+31) Create a generic view
+    a) Convert URLconf
+        i) Edit [APPNAME]/urls.py
+    b) Delete redundant views
+        i) Edit [APPNAME]/views.py
+    c) Create new generic views

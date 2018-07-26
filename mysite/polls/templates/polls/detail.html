@@ -1,0 +1,21 @@
+<h1>{{ question.question_text }}</h1>
+
+<!-- Error catching message posting-->
+{% if error_message %}
+    <p><strong>ERROR: {{ error_message }}</strong></p>
+{% endif %}
+
+<!-- This method is "post", not "get", because we're submitting info and altering information server-side -->
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    <!-- Django anti-Cross Site Request Forgery mechanism -->
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+        <!-- type=button type, name=user label for button, id=used to record which option, value=used to record which question -->
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+        <!-- actually show the content of choice (for argument binds this label to the above label e.g. choice5 -->
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+        <br />
+    {% endfor %}
+    <!-- Directs this to the vote url in URLconf, which redirects to vote view -->
+    <input type="submit" value="Vote" />
+</form>
