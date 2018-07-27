@@ -93,3 +93,12 @@ SUMMARY: Steps for making model changes
     b) Delete redundant views
         i) Edit [APPNAME]/views.py
     c) Create new generic views
+        i) Add to [APPNAME]/views.py
+        ii) Uses ListView, DetailView
+            a) Needs a model argument (e.g. Question)
+            b) DetailView argument is pk, not q_id
+            c) Override the template
+            d) Generic templates has
+32) Create automated tests'
+    a) Edit [APPNAME]/tests.py
+    

@@ -1,4 +1,7 @@
 from django.db import models
+from django.utils import timezone
+
+import datetime
 
 # all of these are subclasses of django.db.models.Model
 class Question(models.Model):
@@ -9,6 +12,9 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question_text
+    
+    def was_published_recently(self):
+        return timezone.now() >= self.pub_date >= timezone.now() - datetime.timedelta(days=1)
     
 
 class Choice(models.Model):
