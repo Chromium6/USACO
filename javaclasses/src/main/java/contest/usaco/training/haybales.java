@@ -18,10 +18,10 @@ public class haybales {
         PrintWriter stdout = new PrintWriter(new BufferedWriter(new FileWriter(programName + ".out")), true);//System.err, true);
         StringTokenizer read = new StringTokenizer(stdin.readLine());
         /* var dec */
-        int n = get(read, 0);
-        int q = get(read, 0);
-        int[] data  = new int[n]; // number of haybales
-
+        int n = get(read, 0); // number of haybales
+        int q = get(read, 0); // number of queries
+        int[] data  = new int[n]; // haybale locations
+        
 		/* init */
         read = new StringTokenizer(stdin.readLine());
         for (int i = 0; i < n; i ++)
@@ -35,24 +35,31 @@ public class haybales {
         for (int i = 0; i < q; i ++) {
         	read = new StringTokenizer(stdin.readLine());
         	start = get(read, 0);
-        	end = get(read, 0);
-        	System.out.println(countUpTo(end, data) - countUpTo(start-1, data));
+            end = get(read, 0);
+            System.out.println();
         }
         /* exit */
         stdin.close();
         stdout.close();
 	}
 	
-	// find all integers <= n (binary search)
-	public static int countUpTo(int k, int[] data) {
-	    if (data[0] > k) return 0;
-	    int min = 0, max = data.length-1, mid = 1;
-	    while (min != max) {
-	        mid = (min+max+1)/2;
-	        if (data[mid] <= k) min = mid;
-	        else max = mid-1;
+    // Binary search the largest haybale location <= low
+    public int search(int val, int[] data) {
+        int min = 0, max = data.length;
+        int mid = -1;
+        while (min != max) {
+            mid = (min+max)/2;
+            if (data[mid] < val) {
+                
+            }
+            else if (data[mid] > val) {
+
+            }
+            else {
+
+            }
         }
-        return mid+1;
+        return mid;
     }
 	
     static int get(StringTokenizer k, int l) {

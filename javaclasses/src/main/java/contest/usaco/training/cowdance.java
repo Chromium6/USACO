@@ -1,3 +1,5 @@
+package contest.usaco.training;
+
 //package contest.usaco.training;
 /**
  * NAME: agentmz1

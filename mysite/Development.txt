@@ -41,7 +41,7 @@
 SUMMARY: Steps for making model changes
     I) Change models in [APPNAME]/models.py
     II) python manage.py makemigrations
-    III) python manage.py migrations
+    III) python manage.py migrate
 --------------------------------------------------------
 14) Open interactive API {python manage.py shell}
 15) Added __str__() to models for debugging
@@ -101,4 +101,9 @@ SUMMARY: Steps for making model changes
             d) Generic templates has
 32) Create automated tests'
     a) Edit [APPNAME]/tests.py
-    
+    b) TO BE CONTINUED
+33) Add static files (non-HTML files e.g. images, Javascript, CSS)
+    a) Create directory static in [APPNAME]
+    b) Add a stylesheet (style.css)
+    c) Modify the template to use this stylesheet
+    d) Add a background image
